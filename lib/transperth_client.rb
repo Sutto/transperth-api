@@ -28,7 +28,7 @@ class TransperthClient
       line = tds[2].gsub(/To /, '')
       extra = tds[3].gsub(/\(\d+ cars\)/, '')
       platform = extra[/platform (\w+)/, 1].to_i
-      pattern = extra[/(\w+) pattern/, 1].strip
+      pattern = extra[/(\w+) pattern/, 1].to_s.strip.presence
       cars =  tds[3][/(\d+) cars/].to_i
       status = tds[5]
       on_time = !!(status =~ /On Time/i)

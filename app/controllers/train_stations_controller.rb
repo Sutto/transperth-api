@@ -12,4 +12,14 @@ class TrainStationsController < ApplicationController
     expose times
   end
 
+  private
+
+  def normalise_object(object, options = {})
+    result = super
+    if action_name == 'index'
+      result.each { |i| i['url'] = train_station_url(i['id']) }
+    end
+    result
+  end
+
 end
