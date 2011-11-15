@@ -1,0 +1,32 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  min_messages: warning
+  database: transperth_development
+  username: transperth
+  password: transperth
+
+test: &TEST
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  database: transperth_test
+  min_messages: warning
+  username: transperth
+  password: transperth
+
+staging:
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  database: transperth_staging
+  user: transperth
+  password:
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: transperth_production
+  user: transperth
+  password:
