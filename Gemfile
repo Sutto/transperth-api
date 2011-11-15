@@ -5,7 +5,7 @@ gem 'pg'
 
 gem 'nokogiri'
 gem 'api_smith'
-gem 'rocket_pants', :git => 'git@github.com:jammbox/Rocketpants.git'
+gem 'rocket_pants', :path => 'vendor/rocket_pants'
 
 # Gems used only for assets and not required
 # in production environments by default.

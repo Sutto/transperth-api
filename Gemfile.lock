@@ -1,6 +1,5 @@
-GIT
-  remote: git@github.com:jammbox/Rocketpants.git
-  revision: ea45e19c124eaba5328c1da7db51a011bf14fd1e
+PATH
+  remote: vendor/rocket_pants
   specs:
     rocket_pants (0.1.0)
       actionpack (~> 3.0)
