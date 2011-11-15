@@ -20,5 +20,5 @@ Transperth::Application.configure do
   config.active_support.deprecation = :log
 
   # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtie
+  config.action_dispatch.best_standards_support = :builtin
 end

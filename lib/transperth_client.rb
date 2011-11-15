@@ -5,6 +5,18 @@ class TransperthClient
 
   URL_SCHEME = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
 
+  class TrainTime < APISmith::Smash
+
+    property :time
+    property :line
+    property :pattern
+    property :cars
+    property :status
+    property :on_time
+    property :platform
+
+  end
+
   def self.live_times(station)
     url = URL_SCHEME % URI.escape(station.to_s)
     doc = Nokogiri::HTML HTTParty.get(url)
@@ -14,11 +26,21 @@ class TransperthClient
       [tds[1], tds[2], tds[3], tds[5]]
       time = tds[1]
       line = tds[2].gsub(/To /, '')
-      pattern = tds[3].gsub(/\(\d+ cars\)/, '')
+      extra = tds[3].gsub(/\(\d+ cars\)/, '')
+      platform = extra[/platform (\w+)/, 1].to_i
+      pattern = extra[/(\w+) pattern/, 1].strip
       cars =  tds[3][/(\d+) cars/].to_i
       status = tds[5]
       on_time = !!(status =~ /On Time/i)
-      [time, line, pattern, cars, status, on_time]
+      TrainTime.new({
+        :time     => time,
+        :line     => line,
+        :pattern  => pattern,
+        :cars     => cars,
+        :status   => status,
+        :on_time  => on_time,
+        :platform => platform
+      })
     end
   end
 
