@@ -47,7 +47,7 @@ class TransperthClient
         :platform => platform
       })
     end
-    Station.new :name => stations, :times => times
+    Station.new :name => station, :times => times
   end
 
   def self.train_stations
