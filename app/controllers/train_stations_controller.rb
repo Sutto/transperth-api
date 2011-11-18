@@ -7,9 +7,7 @@ class TrainStationsController < ApplicationController
   end
 
   def show
-    station = TrainStation.find(params[:id])
-    times   = TransperthClient.live_times(station.name)
-    expose times
+    expose TrainStation.find(params[:id])
   end
 
   private

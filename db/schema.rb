@@ -11,12 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111115121047) do
+ActiveRecord::Schema.define(:version => 20111118095023) do
 
   create_table "train_stations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "cached_slug"
   end
+
+  add_index "train_stations", ["cached_slug"], :name => "index_train_stations_on_cached_slug"
 
 end
