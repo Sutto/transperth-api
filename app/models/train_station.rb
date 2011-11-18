@@ -29,8 +29,12 @@ class TrainStation < ActiveRecord::Base
     TransperthClient.live_times "#{name} Stn"
   end
 
-  def serializable_hash(*)
-    super :only => [:name, :lat, :lng], :methods => :times
+  def serializable_hash(options = {})
+    if options[:compact]
+      super :only => [:name, :lat, :lng]
+    else
+      super :only => [:name, :lat, :lng], :methods => :times
+    end
   end
 
 end

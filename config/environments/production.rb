@@ -48,4 +48,6 @@ Transperth::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.rocket_pants.use_caching = true
 end

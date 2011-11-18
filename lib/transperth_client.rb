@@ -26,7 +26,9 @@ class TransperthClient
     url = URL_SCHEME % URI.escape(station.to_s)
     doc = Nokogiri::HTML HTTParty.get(url)
     nbsp =  Nokogiri::HTML("&nbsp;").text
-    times = doc.css('#dnn_ctr1608_ModuleContent table table tr')[1..-2].map do |row|
+    container = doc.css('#dnn_ctr1608_ModuleContent table table tr')
+    return [] if container.blank?
+    times = container[1..-2].map do |row|
       tds = row.css('td').map { |x| x.text.gsub(nbsp, " ").squeeze(' ').strip }
       [tds[1], tds[2], tds[3], tds[5]]
       time = tds[1]
