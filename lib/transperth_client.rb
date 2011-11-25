@@ -17,11 +17,6 @@ class TransperthClient
 
   end
 
-  class Station < APISmith::Smash
-    property :name
-    property :times
-  end
-
   def self.live_times(station)
     url = URL_SCHEME % URI.escape(station.to_s)
     doc = Nokogiri::HTML HTTParty.get(url)
@@ -49,7 +44,7 @@ class TransperthClient
         :platform => platform
       })
     end
-    Station.new :name => station, :times => times
+    times
   end
 
   def self.train_stations
