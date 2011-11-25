@@ -31,9 +31,9 @@ class TrainStation < ActiveRecord::Base
 
   def serializable_hash(options = {})
     if options[:compact]
-      super :only => [:name, :lat, :lng]
+      super :only => [:name, :lat, :lng, :cached_slug]
     else
-      super :only => [:name, :lat, :lng], :methods => :times
+      super :only => [:name, :lat, :lng, :cached_slug], :methods => :times
     end
   end
 
