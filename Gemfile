@@ -23,6 +23,11 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+end
+
 gem "slugged", :git => "git://github.com/Sutto/slugged.git"
 
 gem "thin"

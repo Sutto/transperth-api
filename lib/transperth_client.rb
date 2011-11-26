@@ -1,9 +1,12 @@
 require 'httparty'
 require 'nokogiri'
+require 'open-uri'
 
 class TransperthClient
 
   URL_SCHEME = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
+  # http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=
+  SMART_RIDER_SCHEME = "http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=%s"
 
   class TrainTime < APISmith::Smash
 
@@ -15,6 +18,29 @@ class TransperthClient
     property :on_time
     property :platform
 
+  end
+
+  class SmartRiderStatus < APISmith::Smash
+    property :balance
+    property :concession_type
+    property :concession_expires
+    property :autoload
+  end
+
+  def self.smart_rider(code)
+    code = code.to_s.gsub /\D/, ''
+    return nil unless code =~ /^\d{9}$/
+    url = SMART_RIDER_SCHEME % URI.escape(code)
+    raw = open(url).read
+    return nil if raw =~ /smartrider number not found/i
+    doc = Nokogiri::HTML raw
+    nbsp =  Nokogiri::HTML("&nbsp;").text
+    SmartRiderStatus.new({
+      :balance => doc.at_css('span#lblCurrentBalance').text[/(\d+)\.(\d+)/].to_f,
+      :autoload => doc.at_css('span#lblAutoload').text.downcase.include?("true"),
+      :concession_type => doc.at_css('span#lblType').text.strip,
+      :concession_expires => doc.at_css('span#lblExpires').text.strip.presence
+    })
   end
 
   def self.live_times(station)

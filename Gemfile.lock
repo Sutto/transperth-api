@@ -50,6 +50,7 @@ GEM
       activesupport (= 3.1.1)
     activesupport (3.1.1)
       multi_json (~> 1.0)
+    addressable (2.2.6)
     api_smith (1.0.0)
       hashie (~> 1.0)
       httparty
@@ -62,6 +63,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
+    crack (0.3.1)
     daemons (1.1.4)
     diff-lcs (1.1.3)
     erubis (2.7.0)
@@ -161,6 +163,10 @@ GEM
       multi_json (>= 1.0.2)
     uuid (2.3.4)
       macaddr (~> 1.0)
+    vcr (1.11.3)
+    webmock (1.7.8)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
     will_paginate (3.0.2)
     yajl-ruby (1.1.0)
 
@@ -182,3 +188,5 @@ DEPENDENCIES
   slugged!
   thin
   uglifier (>= 1.0.3)
+  vcr
+  webmock

@@ -9,7 +9,7 @@ class TrainStationsController < ApplicationController
   end
 
   def show
-    expose TrainStation.find_using_slug(params[:id])
+    expose TrainStation.find_using_slug!(params[:id])
   end
 
   private
