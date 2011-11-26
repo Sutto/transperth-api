@@ -2,7 +2,7 @@ class TrainStationsController < ApplicationController
 
   version 1
 
-  caches :index, :show
+  caches :index
 
   def index
     expose TrainStation.order('name ASC').all, :compact => true
