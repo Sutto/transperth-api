@@ -17,6 +17,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :test, :development do
+  gem 'rr'
+  gem 'rspec'
+  gem 'rspec-rails'
+end
+
 gem "slugged", :git => "git://github.com/Sutto/slugged.git"
 
 gem "thin"
