@@ -1,1 +1,0 @@
-{"klass":"Taps::Push","database_url":"postgres://transperth:transperth@localhost/transperth_development?encoding=utf8","remote_url":"http://heroku:osui59a24am79x@taps19.heroku.com","session_uri":"/sessions/9856316046","stream_state":{},"completed_tables":["schema_migrations"],"table_filter":null,"local_tables_info":{"schema_migrations":3,"train_stations":69}}
