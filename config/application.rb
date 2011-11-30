@@ -45,5 +45,8 @@ module Transperth
 
     require 'transperth_client'
 
+    require 'rack/cache'
+    config.middleware.delete Rack::Cache
+
   end
 end
