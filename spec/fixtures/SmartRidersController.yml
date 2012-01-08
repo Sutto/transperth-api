@@ -1,0 +1,139 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://136213.mobi:80/SmartRider/SmartRiderResult.aspx?SRN=123456789
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 08 Jan 2012 12:48:22 GMT
+      server:
+      - Microsoft-IIS/6.0
+      x-powered-by:
+      - ASP.NET
+      x-aspnet-version:
+      - 2.0.50727
+      set-cookie:
+      - ASP.NET_SessionId=nlbwtmmrv5fal03o31gtns45; path=/; HttpOnly
+      cache-control:
+      - private
+      content-type:
+      - application/xhtml+xml; charset=utf-8
+      content-length:
+      - '3397'
+    body: ! "\r\n<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">\r\n<html
+      xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head id=\"Head1\"><title>\r\n\tMy
+      SmartRider Details\r\n</title><meta name=\"viewport\" content=\"initial-scale=1.0,
+      user-scalable=no\" /><link href=\"../App_Themes/TP_Mobi/mobiweb.css\" type=\"text/css\"
+      rel=\"stylesheet\" /></head>\r\n<body>\r\n    <div id=\"pnlDisplay\">\r\n\t\r\n
+      \       <form name=\"form1\" method=\"post\" action=\"SmartRiderResult.aspx?SRN=123456789\"
+      id=\"form1\">\r\n\t<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\"
+      value=\"/wEPaA8FDzhjZTljNWRmZWYwNzg0NGTG6SlHgCu2HLqBOl/9H4YnuaN7BQ==\" />\r\n\t\r\n
+      \       \r\n<div class=\"tpm_menu\">\r\n            <a href=\"/Default.aspx\"
+      accesskey=\"0\">\r\n                    <img id=\"tpLogo\" src='/App_Themes/TP_Mobi/images/Transperth.gif'
+      alt=\"Transperth Logo\" width=\"98\" height=\"18\" /></a>\r\n                    \r\n
+      \                   <br />\r\n                    \r\n            <span class=\"tpm_navLinks\">\r\n
+      \               <a id=\"pageHeader_hypHome\" title=\"Home\" href=\"../Default.aspx\">Home</a>\r\n
+      \               &nbsp;&nbsp;         \r\n                <a id=\"pageHeader_hypBack\"
+      title=\"Back\" href=\"/SmartRider/SmartRiderBalance.aspx\">Back</a>  \r\n                &nbsp;&nbsp;
+      \         \r\n                <a id=\"pageHeader_hypRefresh\" title=\"Refresh\"
+      href=\"/SmartRider/SmartRiderResult.aspx?SRN=123456789\">Refresh</a>&nbsp;\r\n
+      \           </span>         \r\n</div>\r\n            <div class=\"tpm_content\">\r\n
+      \               <div class=\"tpm_contentpage\">\r\n\t\t\t\t\t<div id=\"pnlSmartRider\">\r\n\t\t\r\n\t\t\t\t\t\t\t<div
+      class=\"tpm_headlinelink\">\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t<input
+      type=\"submit\" name=\"btnHelp\" value=\"Help\" id=\"btnHelp\" class=\"tpm_imagebutton\"
+      />\r\n\t\t\t\t\t\t\tSmartRider Details</div>\r\n\t\t\t\t\t\t\t<hr class=\"tpm_divider\"/>\r\n\t\t\t\t\t\t\t<div
+      class=\"tpm_row\">\r\n\t\t\t\t\t\t\t    <div class=\"tpm_textbold\">Current
+      Balance:&nbsp;<span id=\"lblCurrentBalance\" class=\"tpm_text\"></span></div>\r\n\t\t\t\t\t\t\t
+      \   <div class=\"tpm_textbold\">Concession Type:&nbsp;<span id=\"lblType\" class=\"tpm_text\">Not
+      Available</span></div>\r\n\t\t\t\t\t\t\t    <div class=\"tpm_textbold\">Concession
+      Expires:&nbsp;<span id=\"lblExpires\" class=\"tpm_text\">Not Available</span></div>\r\n\t\t\t\t\t\t\t
+      \   <div class=\"tpm_textbold\">Autoload:&nbsp;<span id=\"lblAutoload\" class=\"tpm_text\">Not
+      Available</span></div>\r\n\t\t\t\t\t\t\t    <div>\r\n\t\t\t\t\t\t\t\t    <span
+      id=\"lblMessage\" class=\"tpm_textalert\">SmartRider Number not found.</span>
+      \                       \r\n\t\t\t\t\t\t\t    </div>\r\n\t\t\t\t\t\t\t    <div
+      class=\"tpm_textsmaller\">SmartRider card balances are at least one day behind
+      due to time delays in transmitting the current day’s transactions.</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\r\n\t</div>\r\n\t\t\t\t\t\r\n
+      \               </div>\r\n            </div>\r\n        \r\n<div class=\"tpm_footer\">\r\n
+      \   <div id=\"disclaimDiv\">&nbsp;<a id=\"Footer_hypDisclaimer\" class=\"tpm_footer\"
+      href=\"../Corporate/Disclaimer.aspx\">Disclaimer</a>&nbsp;&nbsp;</div>\r\n    <div
+      id=\"privacyDiv\"><a id=\"Footer_hypPrivacy\" class=\"tpm_footer\" href=\"../Corporate/Privacy.aspx\">Privacy</a>&nbsp;&nbsp;</div>\r\n
+      \   <div id=\"termsDiv\"><a id=\"Footer_hypTerms\" class=\"tpm_footer\" href=\"../Corporate/Terms.aspx\">Terms</a>&nbsp;&nbsp;</div>\r\n
+      \   <div id=\"copyDiv\">&copy;&nbsp;2009&nbsp;&nbsp;</div>\r\n</div>\r\n        \r\n\t<input
+      type=\"hidden\" name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"/wEWAgKNht7QBgLJvMS6Dhv3XlxPz0Ms/kWFZcD+gvIY0fio\"
+      /></form>\r\n    \r\n</div>\r\n</body>\r\n</html>\r\n"
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://136213.mobi:80/SmartRider/SmartRiderResult.aspx?SRN=036296382
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 08 Jan 2012 12:48:22 GMT
+      server:
+      - Microsoft-IIS/6.0
+      x-powered-by:
+      - ASP.NET
+      x-aspnet-version:
+      - 2.0.50727
+      set-cookie:
+      - ASP.NET_SessionId=lk4spdnlphsa5afd3uqk0w45; path=/; HttpOnly
+      cache-control:
+      - private
+      content-type:
+      - application/xhtml+xml; charset=utf-8
+      content-length:
+      - '3435'
+    body: ! "\r\n<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">\r\n<html
+      xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head id=\"Head1\"><title>\r\n\tMy
+      SmartRider Details\r\n</title><meta name=\"viewport\" content=\"initial-scale=1.0,
+      user-scalable=no\" /><link href=\"../App_Themes/TP_Mobi/mobiweb.css\" type=\"text/css\"
+      rel=\"stylesheet\" /></head>\r\n<body>\r\n    <div id=\"pnlDisplay\">\r\n\t\r\n
+      \       <form name=\"form1\" method=\"post\" action=\"SmartRiderResult.aspx?SRN=036296382\"
+      id=\"form1\">\r\n\t<input type=\"hidden\" name=\"__VIEWSTATE\" id=\"__VIEWSTATE\"
+      value=\"/wEPaA8FDzhjZTljNWRmZWZlYzY2MGSpDrAfKB+bH00w/Xtsd9ISV5CuAQ==\" />\r\n\t\r\n
+      \       \r\n<div class=\"tpm_menu\">\r\n            <a href=\"/Default.aspx\"
+      accesskey=\"0\">\r\n                    <img id=\"tpLogo\" src='/App_Themes/TP_Mobi/images/Transperth.gif'
+      alt=\"Transperth Logo\" width=\"98\" height=\"18\" /></a>\r\n                    \r\n
+      \                   <br />\r\n                    \r\n            <span class=\"tpm_navLinks\">\r\n
+      \               <a id=\"pageHeader_hypHome\" title=\"Home\" href=\"../Default.aspx\">Home</a>\r\n
+      \               &nbsp;&nbsp;         \r\n                <a id=\"pageHeader_hypBack\"
+      title=\"Back\" href=\"/SmartRider/SmartRiderBalance.aspx\">Back</a>  \r\n                &nbsp;&nbsp;
+      \         \r\n                <a id=\"pageHeader_hypRefresh\" title=\"Refresh\"
+      href=\"/SmartRider/SmartRiderResult.aspx?SRN=036296382\">Refresh</a>&nbsp;\r\n
+      \           </span>         \r\n</div>\r\n            <div class=\"tpm_content\">\r\n
+      \               <div class=\"tpm_contentpage\">\r\n\t\t\t\t\t<div id=\"pnlSmartRider\">\r\n\t\t\r\n\t\t\t\t\t\t\t<div
+      class=\"tpm_headlinelink\">\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t\r\n\t\t\t\t\t\t\t<input
+      type=\"submit\" name=\"btnHelp\" value=\"Help\" id=\"btnHelp\" class=\"tpm_imagebutton\"
+      />\r\n\t\t\t\t\t\t\tSmartRider Details</div>\r\n\t\t\t\t\t\t\t<hr class=\"tpm_divider\"/>\r\n\t\t\t\t\t\t\t<div
+      class=\"tpm_row\">\r\n\t\t\t\t\t\t\t    <div class=\"tpm_textbold\">Current
+      Balance:&nbsp;<span id=\"lblCurrentBalance\" class=\"tpm_text\">$3.81</span></div>\r\n\t\t\t\t\t\t\t
+      \   <div class=\"tpm_textbold\">Concession Type:&nbsp;<span id=\"lblType\" class=\"tpm_text\">Standard</span></div>\r\n\t\t\t\t\t\t\t
+      \   <div class=\"tpm_textbold\">Concession Expires:&nbsp;<span id=\"lblExpires\"
+      class=\"tpm_text\"></span></div>\r\n\t\t\t\t\t\t\t    <div class=\"tpm_textbold\">Autoload:&nbsp;<span
+      id=\"lblAutoload\" class=\"tpm_text\">True</span></div>\r\n\t\t\t\t\t\t\t    <div>\r\n\t\t\t\t\t\t\t\t
+      \   <span id=\"lblMessage\" class=\"tpm_textalert\">*Note: Balance may not include
+      transactions that have occurred within the last two days.</span>                        \r\n\t\t\t\t\t\t\t
+      \   </div>\r\n\t\t\t\t\t\t\t    <div class=\"tpm_textsmaller\">SmartRider card
+      balances are at least one day behind due to time delays in transmitting the
+      current day’s transactions.</div>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\r\n\t</div>\r\n\t\t\t\t\t\r\n
+      \               </div>\r\n            </div>\r\n        \r\n<div class=\"tpm_footer\">\r\n
+      \   <div id=\"disclaimDiv\">&nbsp;<a id=\"Footer_hypDisclaimer\" class=\"tpm_footer\"
+      href=\"../Corporate/Disclaimer.aspx\">Disclaimer</a>&nbsp;&nbsp;</div>\r\n    <div
+      id=\"privacyDiv\"><a id=\"Footer_hypPrivacy\" class=\"tpm_footer\" href=\"../Corporate/Privacy.aspx\">Privacy</a>&nbsp;&nbsp;</div>\r\n
+      \   <div id=\"termsDiv\"><a id=\"Footer_hypTerms\" class=\"tpm_footer\" href=\"../Corporate/Terms.aspx\">Terms</a>&nbsp;&nbsp;</div>\r\n
+      \   <div id=\"copyDiv\">&copy;&nbsp;2009&nbsp;&nbsp;</div>\r\n</div>\r\n        \r\n\t<input
+      type=\"hidden\" name=\"__EVENTVALIDATION\" id=\"__EVENTVALIDATION\" value=\"/wEWAgKRzcb+DgLJvMS6Dux/Ko0SnTL7pZEx6TiJ+d5yTjzr\"
+      /></form>\r\n    \r\n</div>\r\n</body>\r\n</html>\r\n"
+    http_version: '1.1'
