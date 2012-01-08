@@ -30,6 +30,10 @@ group :test do
   gem 'simplecov', :platform => 'mri_19'
 end
 
+group :production do
+  gem 'dalli'
+end
+
 gem "slugged", :git => "git://github.com/Sutto/slugged.git"
 
 gem "thin"

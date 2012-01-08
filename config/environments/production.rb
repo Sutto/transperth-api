@@ -51,4 +51,6 @@ Transperth::Application.configure do
   config.active_support.deprecation = :notify
 
   config.rocket_pants.use_caching = true
+
+  config.cache_store = :dalli_store
 end
