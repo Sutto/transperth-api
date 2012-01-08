@@ -6,7 +6,6 @@ gem 'pg'
 gem 'nokogiri'
 gem 'api_smith'
 gem 'rocket_pants', :path => 'vendor/rocket_pants'
-
 gem 'gcoder'
 
 # Gems used only for assets and not required
@@ -26,6 +25,8 @@ end
 group :test do
   gem 'webmock'
   gem 'vcr'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 gem "slugged", :git => "git://github.com/Sutto/slugged.git"

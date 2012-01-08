@@ -14,6 +14,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.include RocketPants::TestHelper,    :type => :controller
   config.include RocketPants::RSpecMatchers, :type => :controller
+  config.include FactoryGirl::Syntax::Methods
   config.extend  VCR::RSpec::Macros
   config.extend  VCRCassetteExtensions
 end
