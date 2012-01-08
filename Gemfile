@@ -27,6 +27,7 @@ group :test do
   gem 'vcr'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'simplecov', :platform => 'mri_19'
 end
 
 gem "slugged", :git => "git://github.com/Sutto/slugged.git"

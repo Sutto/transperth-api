@@ -9,7 +9,7 @@ class TrainStation < ActiveRecord::Base
   def self.seed!
     destroy_all
     TransperthClient.train_stations.each do |name|
-      create :name => name.gsub(/ Stn$/, '')
+      find_or_create_by_name name.gsub(/ Stn$/, '')
     end
   end
 

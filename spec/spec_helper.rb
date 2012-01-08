@@ -1,4 +1,14 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+begin
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_filter "/rocket_pants/"
+  end
+rescue LoadError => e
+  puts 'SimpleCov not available, skipping coverage...'
+end
+
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
