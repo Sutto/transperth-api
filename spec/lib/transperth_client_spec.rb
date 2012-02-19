@@ -128,4 +128,34 @@ describe TransperthClient do
 
   end
 
+  describe 'getting a list of bus times' do
+
+    subject { TransperthClient.bus_times '10321' }
+
+    it 'should return an empty array on an invalid stop' do
+      TransperthClient.bus_times(12345).should == []
+      TransperthClient.bus_times("dfsdfsdf").should == []
+    end
+
+    it 'should return a list of all bus stops' do
+      subject.should be_present
+      subject.should be_a Array
+      subject.each do |s|
+        s.should be_a TransperthClient::BusTime
+        s.time.should be_present
+        s.destination.should be_present
+        s.route.should be_present
+      end
+    end
+
+    it 'should include the time' do
+      subject.each do |time|
+        time.time.should be_present
+        time.time.should be_a String
+        time.time.should =~ /^\d\d:\d\d$/
+      end
+    end
+
+  end
+
 end

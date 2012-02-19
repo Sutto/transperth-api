@@ -7,9 +7,9 @@ class TransperthClient
   URL_SCHEME = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
   # http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=
   SMART_RIDER_SCHEME = "http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=%s"
+  BUS_STOP_SCHEME    = "http://136213.mobi/Bus/StopResults.aspx?SN=%s"
 
   class TrainTime < APISmith::Smash
-
     property :time
     property :line
     property :pattern
@@ -17,7 +17,14 @@ class TransperthClient
     property :status
     property :on_time
     property :platform
+  end
 
+  class BusTime < APISmith::Smash
+    property :time
+    property :destination
+    property :comment
+    property :route
+    property :approximate
   end
 
   class SmartRiderStatus < APISmith::Smash
@@ -71,6 +78,29 @@ class TransperthClient
       })
     end
     times
+  end
+
+  def self.bus_times(stop_number)
+    url = BUS_STOP_SCHEME % URI.escape(stop_number.to_s)
+    raw = open(url).read
+    return [] if raw =~ /not found or no more services/
+    doc = Nokogiri::HTML raw
+    doc.css('.tpm_row .tpm_row_content').map do |row|
+      mapped = Hash[*row.to_html.scan(/<strong>(\w+):?<\/strong>([^<]*)<br>/).map { |r| r.map { |i| i.to_s.strip.presence } }.flatten]
+      time = mapped['Time']
+      approximate = false
+      if time =~ /\*$/
+        approximate = true
+        time = time[0..-2]
+      end
+      BusTime.new({
+        :comment     => mapped['Comment'],
+        :destination => mapped['Destination'],
+        :route       => mapped['Route'],
+        :time        => time,
+        :approximate => approximate
+      })
+    end
   end
 
   def self.train_stations
