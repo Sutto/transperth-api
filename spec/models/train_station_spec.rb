@@ -69,4 +69,15 @@ describe TrainStation do
     [station.lat, station.lng].should_not == old_details
   end
 
+  it 'should allow you to find stops near a train station' do
+    list = []
+    10.times do |i|
+      list << TrainStation.create(:name => "test stop #{i}", :lat => i/1000.0, :lng => i/1000.0)
+    end
+    list[0, 5].should_not == list.reverse[0, 5]
+    TrainStation.station_near('0,0').limit(5).all.should == list[0, 5]
+    TrainStation.station_near([0,0]).limit(5).all.should == list[0, 5]
+    TrainStation.station_near([0.011, 0.011]).limit(5).all.should == list.reverse[0, 5]
+  end
+
 end

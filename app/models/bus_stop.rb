@@ -11,7 +11,7 @@ class BusStop < ActiveRecord::Base
   def self.stop_near(coordinates)
     lat, lng = Array(coordinates).join(",").split(",", 2).map { |i| BigDecimal(i) }
     return where(:id => false) if lat.blank? || lng.blank?
-    near([lat, lng], 16).order('distance ASC')
+    near([lat, lng], 2.5, :units => :km).order('distance ASC')
   end
 
   def self.import!

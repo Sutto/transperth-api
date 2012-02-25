@@ -8,7 +8,7 @@ describe BusStop do
     {
       :lat          => (rand() * 360 - 180),
       :lng          => (rand() * 180 - 90),
-      :stop_number  => (rand() * 90000 + 10000),
+      :stop_number  => (rand() * 90000 + 10000).to_i,
       :display_name => "Example Test Stop",
       :description  => "Stop of Doom"
     }.tap { |d| d[:gtfs_id] = d[:stop_number] }
@@ -67,6 +67,17 @@ describe BusStop do
   it 'should let you import bus stops' do
     mock(BusStop).create.with_any_args.times(any_times)
     BusStop.import!
+  end
+
+  it 'should allow you to find stops near a bus stop' do
+    list = []
+    10.times do |i|
+      list << BusStop.create(base_data.merge(:lat => i/1000.0, :lng => i/1000.0))
+    end
+    list[0, 5].should_not == list.reverse[0, 5]
+    BusStop.stop_near('0,0').limit(5).all.should == list[0, 5]
+    BusStop.stop_near([0,0]).limit(5).all.should == list[0, 5]
+    BusStop.stop_near([0.011, 0.011]).limit(5).all.should == list.reverse[0, 5]
   end
 
 end
