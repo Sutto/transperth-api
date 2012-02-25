@@ -6,47 +6,57 @@ describe TrainStationsController do
 
   before :each do
     # We want to seed all the train stations...
-    TrainStation.create :name => 'Kenwick'
-    TrainStation.create :name => 'Perth'
+    TrainStation.create :name => 'Kenwick', :lat => 10, :lng => 10
+    TrainStation.create :name => 'Perth',   :lat => 20, :lng => 20
   end
 
   let(:content_body) { response.decoded_body.response }
 
   describe 'listing train stations' do
 
-    before :each do
-      get :index, :version => 1
-    end
+    context 'basic listings' do
 
-    it 'should have the correct status code' do
-      response.should be_successful
-    end
-
-    it 'should include the station url' do
-      content_body.each do |item|
-        item.url.should be_present
+      before :each do
+        get :index, :version => 1
       end
+
+      it 'should have the correct status code' do
+        response.should be_successful
+      end
+
+      it 'should include the station url' do
+        content_body.each do |item|
+          item.url.should be_present
+        end
+      end
+
+      it 'should be the correct object types' do
+        response.should be_collection_resource
+      end
+
+      it 'should return compact stations' do
+        content_body.should be_all { |r| r.compact }
+      end
+
+      it 'should be ordered by name' do
+        names = content_body.map { |r| r.name }
+        names.should == names.sort
+      end
+
+      it 'should not include train times' do
+        content_body.should be_all { |r| r.times.nil? }
+      end
+
+      it 'should be json' do
+        response.content_type.should == 'application/json'
+      end
+
     end
 
-    it 'should be the correct object types' do
-      response.should be_collection_resource
-    end
-
-    it 'should return compact stations' do
-      content_body.should be_all { |r| r.compact }
-    end
-
-    it 'should be ordered by name' do
-      names = content_body.map { |r| r.name }
-      names.should == names.sort
-    end
-
-    it 'should not include train times' do
-      content_body.should be_all { |r| r.times.nil? }
-    end
-
-    it 'should be json' do
-      response.content_type.should == 'application/json'
+    it 'should let you filter to items near a location' do
+      get :index, :version => 1, :near => '10,10'
+      content_body.should have(1).station
+      content_body.first.name.should == 'Kenwick'
     end
 
   end
