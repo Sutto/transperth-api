@@ -5,7 +5,13 @@ class TrainStationsController < ApplicationController
   caches :index, :show
 
   def index
-    expose TrainStation.order('name ASC').all, :compact => true
+    scope = TrainStation
+    if params[:near].present?
+      scope = scope.station_near(params[:near]).limit(5)
+    else
+      scope = scope.order('name ASC')
+    end
+    expose scope.all, :compact => true
   end
 
   def show

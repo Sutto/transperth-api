@@ -6,6 +6,14 @@ class TrainStation < ActiveRecord::Base
   is_sluggable :name
   before_save :geocode_name
 
+  geocoded_by :address, :latitude  => :lat, :longitude => :lng
+
+  def self.station_near(coordinates)
+    lat, lng = Array(coordinates).join(",").split(",", 2).map { |i| BigDecimal(i) }
+    return where(:id => false) if lat.blank? || lng.blank?
+    near([lat, lng], 16).order('distance ASC')
+  end
+
   def self.seed!
     destroy_all
     TransperthClient.train_stations.each do |name|
