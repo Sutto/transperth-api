@@ -1,11 +1,17 @@
 class BusStopsController < ApplicationController
 
   version 1
-  caches  :show
+  caches  :show, :index
+
+  def index
+    scope = BusStop.limit(5)
+    scope = scope.stop_near(params[:near]) if params[:near]
+    expose scope.all, :compact => true
+  end
 
   def show
-    times = TransperthClient.bus_times(params[:id])
-    expose :stop_number => params[:id], :times => times
+    bus_stop = BusStop.find_using_slug!(params[:id])
+    expose bus_stop
   end
 
   private

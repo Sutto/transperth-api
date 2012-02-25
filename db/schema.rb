@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118095023) do
+ActiveRecord::Schema.define(:version => 20120225051259) do
+
+  create_table "bus_stops", :force => true do |t|
+    t.string   "display_name"
+    t.string   "stop_number"
+    t.integer  "gtfs_id"
+    t.decimal  "lat"
+    t.decimal  "lng"
+    t.string   "description"
+    t.string   "cached_slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bus_stops", ["cached_slug"], :name => "index_bus_stops_on_cached_slug"
 
   create_table "train_stations", :force => true do |t|
     t.string   "name"

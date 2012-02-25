@@ -83,6 +83,7 @@ GEM
       hashie
       ruby-hmac
       yajl-ruby
+    geocoder (1.1.1)
     hashie (1.2.0)
     hike (1.2.1)
     httparty (0.8.1)
@@ -193,6 +194,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   gcoder
+  geocoder
   nokogiri
   pg
   rails (= 3.1.1)

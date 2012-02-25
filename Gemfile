@@ -9,6 +9,7 @@ gem 'rocket_pants', :path => 'vendor/rocket_pants'
 gem 'gcoder'
 
 gem 'awesome_print', :require => nil
+gem 'geocoder'
 
 # Gems used only for assets and not required
 # in production environments by default.

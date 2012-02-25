@@ -1,0 +1,112 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://136213.mobi:80/Bus/StopResults.aspx?SN=10000
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sat, 25 Feb 2012 06:44:06 GMT
+      server:
+      - Microsoft-IIS/6.0
+      x-powered-by:
+      - ASP.NET
+      x-aspnet-version:
+      - 2.0.50727
+      set-cookie:
+      - ASP.NET_SessionId=sw5z4df4mmy1tq55dbgacm55; path=/; HttpOnly
+      cache-control:
+      - private
+      content-type:
+      - application/xhtml+xml; charset=utf-8
+      content-length:
+      - '6860'
+    body: ! "\r\n<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\">
+      \r\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head><title>\r\n\tStopNumber
+      Search Results\r\n</title><link href=\"../App_Themes/TP_Mobi/mobiweb.css\" type=\"text/css\"
+      rel=\"stylesheet\" /></head>\r\n<body>\r\n<form name=\"form1\" method=\"post\"
+      action=\"StopResults.aspx?SN=10000\" id=\"form1\">\r\n<input type=\"hidden\"
+      name=\"__VIEWSTATE\" id=\"__VIEWSTATE\" value=\"/wEPaA8FDzhjZWMxZTMwZjk5MTA0OGQ=\"
+      />\r\n\r\n    <div id=\"pnlDisplay\" class=\"mainwrap\">\r\n\t        \r\n        \r\n<div
+      class=\"tpm_menu\">\r\n        <a id=\"pageHeader_hypBack\" title=\"Back\" href=\"/Bus/BusTimes.aspx?SN=10000\"><img
+      title=\"Back\" src=\"../App_Themes/TP_Mobi/back.gif\" alt=\"Back\" border=\"0\"
+      /></a>\r\n        <a href=\"/Default.aspx\" accesskey=\"0\"><img id=\"tpLogo\"
+      src='/App_Themes/TP_Mobi/home.gif' alt=\"Transperth Logo\" /></a>\r\n</div>\r\n
+      \       <div class=\"tpm_content\">\r\n            <a href=\"#help\" id=\"tpm_helpbutton\"></a>\r\n
+      \            <h1><span id=\"lblStopHeading\">Results for Stop 10000</span></h1>\r\n
+      \                                             \r\n                        \r\n
+      \                           <div class=\"tpm_row\">\r\n                                <a
+      class=\"tpm_row_heading\" href=\"#\">\r\n                                    <div
+      class=\"arrow\"></div>\r\n                                    Route 220 at 15:18*
+      \r\n                                </a>\r\n                                <div
+      class=\"tpm_row_content\">\r\n                                    <strong>Destination</strong>
+      To Wellington St Bus Stn<br />\r\n                                    <strong>Route:</strong>
+      220<br />\r\n                                    <strong>Time</strong> 15:18*<br
+      />\r\n                                    <strong>Comment</strong> Deviates
+      via Armadale Kelmscott Hospital.<br />\r\n                                </div>\r\n
+      \                           </div>\r\n                        \r\n                            <div
+      class=\"tpm_row\">\r\n                                <a class=\"tpm_row_heading\"
+      href=\"#\">\r\n                                    <div class=\"arrow\"></div>\r\n
+      \                                   Route 220 at 16:18* \r\n                                </a>\r\n
+      \                               <div class=\"tpm_row_content\">\r\n                                    <strong>Destination</strong>
+      To Wellington St Bus Stn<br />\r\n                                    <strong>Route:</strong>
+      220<br />\r\n                                    <strong>Time</strong> 16:18*<br
+      />\r\n                                    <strong>Comment</strong> Deviates
+      via Armadale Kelmscott Hospital.<br />\r\n                                </div>\r\n
+      \                           </div>\r\n                        \r\n                            <div
+      class=\"tpm_row\">\r\n                                <a class=\"tpm_row_heading\"
+      href=\"#\">\r\n                                    <div class=\"arrow\"></div>\r\n
+      \                                   Route 220 at 17:18* \r\n                                </a>\r\n
+      \                               <div class=\"tpm_row_content\">\r\n                                    <strong>Destination</strong>
+      To Wellington St Bus Stn<br />\r\n                                    <strong>Route:</strong>
+      220<br />\r\n                                    <strong>Time</strong> 17:18*<br
+      />\r\n                                    <strong>Comment</strong> Deviates
+      via Armadale Kelmscott Hospital.<br />\r\n                                </div>\r\n
+      \                           </div>\r\n                        \r\n                            <div
+      class=\"tpm_row\">\r\n                                <a class=\"tpm_row_heading\"
+      href=\"#\">\r\n                                    <div class=\"arrow\"></div>\r\n
+      \                                   Route 249 at 18:33* \r\n                                </a>\r\n
+      \                               <div class=\"tpm_row_content\">\r\n                                    <strong>Destination</strong>
+      To Kelmscott Stn<br />\r\n                                    <strong>Route:</strong>
+      249<br />\r\n                                    <strong>Time</strong> 18:33*<br
+      />\r\n                                    <strong>Comment</strong> <br />\r\n
+      \                               </div>\r\n                            </div>\r\n
+      \                       \r\n                            <div class=\"tpm_row\">\r\n
+      \                               <a class=\"tpm_row_heading\" href=\"#\">\r\n
+      \                                   <div class=\"arrow\"></div>\r\n                                    Route
+      249 at 19:03* \r\n                                </a>\r\n                                <div
+      class=\"tpm_row_content\">\r\n                                    <strong>Destination</strong>
+      To Kelmscott Stn<br />\r\n                                    <strong>Route:</strong>
+      249<br />\r\n                                    <strong>Time</strong> 19:03*<br
+      />\r\n                                    <strong>Comment</strong> <br />\r\n
+      \                               </div>\r\n                            </div>\r\n
+      \                       \r\n                            <p>* denotes approximate
+      times.</p>\r\n                         \r\n                                       \r\n
+      \       </div>\r\n        <div id=\"tpm_help\" tabindex=\"100\">\r\n            <a
+      class=\"tpm_row_heading\" href=\"#\">\r\n            \r\n            \t<!--
+      Arrow image - uses jQuery to do image flip using single image -->\r\n            \t<div
+      class=\"arrow\"></div>\r\n            \r\n            \tHelp\r\n\r\n            </a>\r\n
+      \           <div class=\"tpm_row_content\">\r\n\t\t\t\t<!-- NUMBERED HELP _
+      try and use an ordered list for ALL help menus. Increases cohesion -->\r\n\t
+      \       \t<ol>\r\n\t        \t\t<li><span id=\"lblHelpText\">5 departure times
+      will be displayed. Times are approximate scheduled times only.</span></li>\r\n\t
+      \       \t\t<li>Click on a result to view further route information.</li>\r\n\t
+      \       \t\t<li>Click on ‘Back’ to return to results.</li>\r\n\t        \t</ol>\t
+      \       \t\r\n\t\t\t</div> \r\n        </div>\r\n        \r\n<div class=\"tpm_footer\">\r\n
+      \   <a id=\"Footer_hypDisclaimer\" href=\"../Corporate/Disclaimer.aspx\">Disclaimer</a>\r\n
+      \   <a id=\"Footer_hpPrivacy\" href=\"../Corporate/Privacy.aspx\">Privacy</a>\r\n
+      \   <a id=\"Footer_hypTerms\" href=\"../Corporate/Terms.aspx\">Terms</a>\r\n
+      \   <span class=\"copyright\">&copy; 2012</span>    \r\n\t<span class=\"copyright\"><a
+      href=\"http://www.transperth.wa.gov.au?mobileversion=false\">Transperth Website</a></span>\r\n</div>
+      \       \r\n    \r\n</div>\r\n    \r\n<script type=\"text/javascript\">var _gaq
+      = _gaq || [];_gaq.push(['_setAccount', 'UA-993890-7']);_gaq.push(['_trackPageview']);(function()
+      {var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
+      = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www')
+      + '.google-analytics.com/ga.js';var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);})();</script></form>\r\n</body>\r\n</html>\r\n"
+    http_version: '1.1'
