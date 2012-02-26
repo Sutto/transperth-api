@@ -10,7 +10,7 @@ class BusStopsController < ApplicationController
   end
 
   def show
-    bus_stop = BusStop.find_using_slug!(params[:id])
+    bus_stop = BusStop.where(:stop_number => params[:id]).first!
     expose bus_stop
   end
 
