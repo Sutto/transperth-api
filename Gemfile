@@ -5,7 +5,7 @@ gem 'pg'
 
 gem 'nokogiri'
 gem 'api_smith'
-gem 'rocket_pants', '~> 1.0'
+gem 'rocket_pants'
 gem 'gcoder'
 
 gem 'awesome_print', :require => nil
