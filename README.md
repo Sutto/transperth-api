@@ -34,7 +34,7 @@ Other than that, our guidelines very closely match the GemCutter guidelines [her
 
 ## License
 
-Transperth API is released under the MIT License (see the [license file](./LICENSE)) and is
+Transperth API is released under the MIT License (see the [license file](https://github.com/Sutto/transperth-api/blob/master/LICENSE)) and is
 copyright Darcy Laycock, 2012.
 
 This client is in no way affiliated with / endorsed by Transperth and is intended for education purposes only. Please note
