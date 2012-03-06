@@ -133,7 +133,7 @@ describe TransperthClient do
     subject { TransperthClient.bus_times '10321' }
 
     it 'should return an empty array on an invalid stop' do
-      TransperthClient.bus_times(12345).should == []
+      TransperthClient.bus_times(112345).should == []
       TransperthClient.bus_times("dfsdfsdf").should == []
     end
 

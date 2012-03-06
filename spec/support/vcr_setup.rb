@@ -1,6 +1,9 @@
-VCR.config do |c|
+VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'fixtures')
-  c.stub_with :webmock
+  c.hook_into :webmock
+  c.preserve_exact_body_bytes do |http_message|
+    http_message.body.encoding.name == 'ASCII-8BIT' || !http_message.body.valid_encoding?
+  end
 end
 
 module VCRCassetteExtensions
