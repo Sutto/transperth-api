@@ -5,6 +5,8 @@ class ApplicationController < RocketPants::Base
   # For the api to always revalidate on expiry.
   caching_options[:must_revalidate] = true
 
+  jsonp # Offer JSON across the whole api.
+
   private
 
   # Only use timeout-based caching due to the nature of our app.
