@@ -11,7 +11,8 @@ class TrainStationsController < ApplicationController
     else
       scope = scope.order('name ASC')
     end
-    expose scope.all, :compact => true
+    # expose scope.all, :compact => true
+    rabl scope.all
   end
 
   def show

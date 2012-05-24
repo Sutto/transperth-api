@@ -14,4 +14,9 @@ class ApplicationController < RocketPants::Base
     super resource, false
   end
 
+  def rabl(object, template_name = "#{controller_name}/#{action_name}", options = {})
+    render_json Rabl.render(object, template_name, :view_path => Rails.root.join('app/views'), :format => :json, :scope => self)
+  end
+  
+
 end

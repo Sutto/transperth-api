@@ -8,6 +8,8 @@ gem 'api_smith'
 gem 'rocket_pants'
 gem 'gcoder'
 
+gem 'rabl'
+
 gem 'awesome_print', :require => nil
 gem 'geocoder'
 
