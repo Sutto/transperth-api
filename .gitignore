@@ -5,3 +5,4 @@ tmp/
 .sass-cache/
 coverage/
 config/database.yml
+doc/generated-api

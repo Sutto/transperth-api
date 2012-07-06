@@ -43,5 +43,7 @@ module Transperth
 
     require 'transperth_client'
 
+    config.emmett.name = "Unofficial Transperth API"
+
   end
 end

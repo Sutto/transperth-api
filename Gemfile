@@ -14,6 +14,8 @@ gem 'geocoder'
 gem "slugged"
 gem "thin"
 
+gem "emmett"
+
 group :test, :development do
   gem 'rr'
   gem 'rspec'
