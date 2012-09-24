@@ -6,30 +6,30 @@ class BusStop < ActiveRecord::Base
 
   is_sluggable :stop_number
 
-  geocoded_by :address, :latitude  => :lat, :longitude => :lng
+  geocoded_by :address, latitude: :lat, longitude: :lng
 
   def self.stop_near(coordinates)
     lat, lng = Array(coordinates).join(",").split(",", 2).map { |i| BigDecimal(i) }
-    return where(:id => false) if lat.blank? || lng.blank?
-    near([lat, lng], 2.5, :units => :km).order('distance ASC')
+    return where(id: false) if lat.blank? || lng.blank?
+    near([lat, lng], 2.5, units: :km).order('distance ASC')
   end
 
   def self.import!
     delete_all
     CSV.foreach(Rails.root.join('transit_data', 'stops.txt'), :headers => :first_line) do |row|
       create({
-        :stop_number  => row['stop_code'],
-        :display_name => row['stop_name'],
-        :description  => row['stop_desc'].presence,
-        :lat          => row['stop_lat'],
-        :lng          => row['stop_lon'],
-        :gtfs_id      => row['stop_id']
+        stop_number:  row['stop_code'],
+        display_name: row['stop_name'],
+        description:  row['stop_desc'].presence,
+        lat:          row['stop_lat'],
+        lng:          row['stop_lon'],
+        gtfs_id:      row['stop_id']
       })
     end
   end
 
   def serializable_hash(options = {})
-    result = super :only => %w(id stop_number display_name description lat lng)
+    result = super only: %w(id stop_number display_name description lat lng)
     if options[:compact]
       result['compact']  = true
     else

@@ -3,6 +3,8 @@
 This sample app is an example application for [RocketPants](https://github.com/filtersquad/rocket_pants) and makes use
 of ActiveRecord, RocketPants and API Smith for an API client.
 
+Please note that this applicaton requires Ruby 1.9.3.
+
 ## Getting Started
 
 To get started, clone this repository and enter it. Next:
