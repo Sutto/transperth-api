@@ -4,8 +4,12 @@ require 'open-uri'
 
 class TransperthClient
 
-  URL_SCHEME = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
-  # http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=
+  class Client
+    include HTTParty
+    # persistent_connection_adapter
+  end
+
+  URL_SCHEME         = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
   SMART_RIDER_SCHEME = "http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=%s"
   BUS_STOP_SCHEME    = "http://136213.mobi/Bus/StopResults.aspx?SN=%s"
 
@@ -52,7 +56,7 @@ class TransperthClient
 
   def self.live_times(station)
     url = URL_SCHEME % URI.escape(station.to_s)
-    doc = Nokogiri::HTML HTTParty.get(url)
+    doc = Nokogiri::HTML Client.get(url)
     nbsp =  Nokogiri::HTML("&nbsp;").text
     container = doc.css('#dnn_ctr1608_ModuleContent table table tr')
     return [] if container.blank?
@@ -105,7 +109,7 @@ class TransperthClient
 
   def self.train_stations
     url = URL_SCHEME % URI.escape("Perth Stn")
-    doc = Nokogiri::HTML HTTParty.get(url)
+    doc = Nokogiri::HTML Client.get(url)
     doc.css('#dnn_ctr1610_DynamicForms_tblQuestions select option').map { |r| r[:value] }
   end
 
