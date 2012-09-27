@@ -16,8 +16,6 @@ gem 'geocoder'
 gem "slugged"
 gem "thin"
 
-gem "persistent_httparty"
-
 gem "emmett"
 
 group :test, :development do

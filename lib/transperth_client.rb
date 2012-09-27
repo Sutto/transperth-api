@@ -6,7 +6,6 @@ class TransperthClient
 
   class Client
     include HTTParty
-    # persistent_connection_adapter
   end
 
   URL_SCHEME         = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
