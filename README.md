@@ -1,5 +1,13 @@
 # Transperth API
 
+## Want to use the API?
+
+Howdy partner! This API is running for use in building applications.
+
+To find out more, visit the [hosted API documentation](http://doc.perthtransit.com/).
+
+## About
+
 This sample app is an example application for [RocketPants](https://github.com/filtersquad/rocket_pants) and makes use
 of ActiveRecord, RocketPants and API Smith for an API client.
 

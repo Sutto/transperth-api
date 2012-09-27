@@ -39,9 +39,9 @@ class TrainStation < ActiveRecord::Base
 
   def serializable_hash(options = {})
     if options[:compact]
-      super(:only => [:name, :lat, :lng, :cached_slug]).merge 'compact' => true
+      super(:only => [:name, :lat, :lng]).merge 'compact' => true, 'identifier' => cached_slug
     else
-      super(:only => [:name, :lat, :lng, :cached_slug], :methods => 'times').merge 'compact' => false
+      super(:only => [:name, :lat, :lng], :methods => 'times').merge 'compact' => false, 'identifier' => cached_slug
     end
   end
 

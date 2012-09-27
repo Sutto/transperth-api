@@ -26,21 +26,21 @@ Content-Type: application/json; charset=utf-8
 {
   "count": 69,
   "response": [{
-    "cached_slug": "armadale",
+    "identifier": "armadale",
     "compact": true,
     "lat": "-32.1376083",
     "lng": "116.0104606",
     "name": "Armadale",
     "url": "http://api.perthtransit.com/1/train_stations/armadale"
   }, {
-    "cached_slug": "ashfield",
+    "identifier": "ashfield",
     "compact": true,
     "lat": "-31.9129489",
     "lng": "115.9359944",
     "name": "Ashfield",
     "url": "http://api.perthtransit.com/1/train_stations/ashfield"
   }, {
-    "cached_slug": "bassendean",
+    "identifier": "bassendean",
     "compact": true,
     "lat": "-31.9037106",
     "lng": "115.94718",
@@ -53,7 +53,8 @@ Content-Type: application/json; charset=utf-8
 ## Nearby Train Stations
 
 By providing a `near` parameter with a formatted `lat,lng` pair, you can filter
-to only stations within a five kilometre distance from the specified location.
+to only stations within a 2.5 kilometre distance from the specified location up
+to a limit of 5.
 
 For example,
 
@@ -69,21 +70,21 @@ Content-Type: application/json; charset=utf-8
 {
   "count": 3,
   "response": [{
-    "cached_slug": "armadale",
+    "identifier": "armadale",
     "compact": true,
     "lat": "-32.1376083",
     "lng": "116.0104606",
     "name": "Armadale",
     "url": "http://api.perthtransit.com/1/train_stations/armadale"
   }, {
-    "cached_slug": "sherwood",
+    "identifier": "sherwood",
     "compact": true,
     "lat": "-32.1376083",
     "lng": "116.0104606",
     "name": "Sherwood",
     "url": "http://api.perthtransit.com/1/train_stations/sherwood"
   }, {
-    "cached_slug": "challis",
+    "identifier": "challis",
     "compact": true,
     "lat": "-32.1263406",
     "lng": "116.0129372",
@@ -113,7 +114,7 @@ Etag: "example-etag-goes-here"
 
 {
   "response": {
-    "cached_slug": "perth",
+    "identifier": "perth",
     "compact": false,
     "lat": "-31.9510908",
     "lng": "115.8599254",

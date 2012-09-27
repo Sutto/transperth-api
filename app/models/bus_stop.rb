@@ -29,7 +29,8 @@ class BusStop < ActiveRecord::Base
   end
 
   def serializable_hash(options = {})
-    result = super only: %w(id stop_number display_name description lat lng)
+    result = super only: %w(stop_number display_name description lat lng)
+    result['identifier'] = stop_number
     if options[:compact]
       result['compact']  = true
     else
