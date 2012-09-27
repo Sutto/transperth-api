@@ -3,7 +3,9 @@
 The perth transit is an unofficial API to provide easy access to Transperth
 data for developers.
 
-The api is available from [http://api.perthtransit.com/](http://api.perthtransit.com/).
+The API is exposed from [http://api.perthtransit.com/](http://api.perthtransit.com/).
+
+Please note that this entire API is open source - You can access the code [on GitHub](https://github.com/sutto/transperth-api).
 
 ## API Conventions
 
