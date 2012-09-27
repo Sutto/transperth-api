@@ -8,8 +8,9 @@ class SiteController < ApplicationController
 
   def information
     {
-      name: "Perth Transit API",
-      version: 1,
+      name:           "Perth Transit API",
+      version:        1,
+      documentation:  "http://docs.perthtransit.com/",
       endpoints: {
         train_stations: train_stations_url(version: 1),
         bus_stops:      bus_stops_url(version: 1),
