@@ -2,7 +2,7 @@
 
 ## Getting a smart rider information
 
-This accepts a smartrider number and attempts to return available information about
+Given a smartrider number, this attempts to return available information about
 said number in the form of the remaining balance, the type of smart rider and any
 discounts applicable.
 

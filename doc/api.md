@@ -1,6 +1,19 @@
-# The Unofficial Transperth API
+# Perth Transit API
 
-This application houses an unofficial API wrapping the Transperth Web Site.
+The perth transit is an unofficial API to provide easy access to Transperth
+data for developers.
+
+The api is available from [http://api.perthtransit.com/](http://api.perthtransit.com/).
+
+## API Conventions
+
+### Errors
+
+### Compact Responses
+
+### URL Construction
+
+## Notes
 
 It's currently implemented using scraping, but makes its best attempt to be efficient
 at it and to avoid processing data it doesn't have to. Likewise, it caches as much
