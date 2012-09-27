@@ -18,6 +18,8 @@ gem "thin"
 
 gem "emmett"
 
+gem "fog_site"
+
 group :test, :development do
   gem 'rr'
   gem 'rspec'
