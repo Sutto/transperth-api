@@ -157,3 +157,15 @@ PerthTransit.busStop(stopNearMyHouse).done(function(stop) {
   console.log(stop.name, stop.times);
 });
 ```
+
+## SmartRider
+
+The final endpoint provides details for a given smart rider. To access this data, use the `PerthTransit.smartRider` function like so:
+
+```js
+PerthTransit.smartRider("0412 8427 4").done(function(sr) {
+  console.log("SmartRider:", JSON.stringify(sr));
+});
+``
+
+As an example, this provides the balance of the smart rider, if autoload is turned on and details about the concession status of a given card.
