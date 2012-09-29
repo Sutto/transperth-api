@@ -20,8 +20,8 @@ describe TrainStation do
   it 'should let you get a compact version' do
     station = TrainStation.create :name => "Kenwick"
     hash = station.serializable_hash :compact => true
-    hash.keys.should =~ %w(name lat lng cached_slug compact)
-    hash['cached_slug'].should == 'kenwick'
+    hash.keys.should =~ %w(name lat lng identifier compact)
+    hash['identifier'].should == 'kenwick'
     hash['name'].should == 'Kenwick'
     hash['lat'].should be_a BigDecimal
     hash['lng'].should be_a BigDecimal
@@ -31,7 +31,7 @@ describe TrainStation do
   it 'should let you get a full version' do
     station = TrainStation.create :name => "Kenwick"
     hash = station.serializable_hash
-    hash.keys.should =~ %w(name lat lng cached_slug times compact)
+    hash.keys.should =~ %w(name lat lng identifier times compact)
     hash['compact'].should == false
   end
 

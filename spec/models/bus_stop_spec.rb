@@ -13,7 +13,7 @@ describe BusStop do
       :description  => "Stop of Doom"
     }.tap { |d| d[:gtfs_id] = d[:stop_number] }
   end
-  
+
   context 'validations' do
 
     it 'should require a stop number' do
@@ -37,7 +37,7 @@ describe BusStop do
   it 'should allow you to get a compact version' do
     stop = BusStop.create(base_data.merge(:stop_number => 10000))
     serialized = stop.serializable_hash :compact => true
-    serialized.keys.should =~ %w(id stop_number display_name description lat lng compact)
+    serialized.keys.should =~ %w(stop_number identifier name description lat lng compact)
     serialized['compact'].should be_true
     serialized['stop_number'].should be_present
   end
@@ -45,7 +45,7 @@ describe BusStop do
   it 'should allow you to get a full version' do
     stop = BusStop.create(base_data.merge(:stop_number => 10000))
     serialized = stop.serializable_hash
-    serialized.keys.should =~ %w(id stop_number display_name description lat lng times)
+    serialized.keys.should =~ %w(stop_number identifier name description lat lng times)
     serialized['times'].should be_present
     serialized['stop_number'].should be_present
   end

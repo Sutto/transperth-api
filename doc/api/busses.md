@@ -22,7 +22,7 @@ Content-Type: application/json; charset=utf-8
   "response": [{
     "compact": true,
     "description": null,
-    "display_name": "Albany Hwy After Galliers Av",
+    "name": "Albany Hwy After Galliers Av",
     "lat": "-32.1365533333333",
     "lng": "116.017569444444",
     "stop_number": "10004",
@@ -30,7 +30,7 @@ Content-Type: application/json; charset=utf-8
   }, {
     "compact": true,
     "description": null,
-    "display_name": "Albany Hwy Before Carawatha Av",
+    "name": "Albany Hwy Before Carawatha Av",
     "lat": "-32.1359372222222",
     "lng": "116.017875",
     "stop_number": "10205",
@@ -38,7 +38,7 @@ Content-Type: application/json; charset=utf-8
   }, {
     "compact": true,
     "description": null,
-    "display_name": "Albany Hwy Before Caroline St",
+    "name": "Albany Hwy Before Caroline St",
     "lat": "-32.1376488888889",
     "lng": "116.017727777778",
     "stop_number": "10206",
@@ -46,8 +46,7 @@ Content-Type: application/json; charset=utf-8
   }, {
     "compact": true,
     "description": null,
-    "display_name": "Albany Hwy After Rogers L",
-    "id": 24421,
+    "name": "Albany Hwy After Rogers L",
     "lat": "-32.1391138888889",
     "lng": "116.017382222222",
     "stop_number": "10003",
@@ -55,7 +54,7 @@ Content-Type: application/json; charset=utf-8
   }, {
     "compact": true,
     "description": null,
-    "display_name": "Albany Hwy After Caroline St",
+    "name": "Albany Hwy After Caroline St",
     "lat": "-32.1394066666667",
     "lng": "116.01758",
     "stop_number": "10207",
@@ -82,8 +81,7 @@ Content-Type: application/json; charset=utf-8
 {
   "response": {
     "description": "Wanneroo Rd / Beach Rd",
-    "display_name": "Wanneroo Rd After Beach Rd",
-    "id": 26542,
+    "name": "Wanneroo Rd After Beach Rd",
     "lat": "-31.8436127777778",
     "lng": "115.823664444444",
     "stop_number": "12331",

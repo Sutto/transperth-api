@@ -76,7 +76,7 @@ The response data will be a list of up to 5 compact bus stop objects.
 ```js
 PerthTransit.nearbyBusStops().done(function(stops) {
   $.each(stops, function() {
-    console.log("Bus Stop:", this.display_name)
+    console.log("Bus Stop:", this.name)
   });
 });
 ```
@@ -135,7 +135,7 @@ The bus stop api only provides access to those restricted by a location. To acce
 ```js
 PerthTransit.busStops({lat: -32.1376, lng: 116.0104}).done(function(stops) {
   $.each(stops, function() {
-    console.log("Bus Stop:", this.display_name)
+    console.log("Bus Stop:", this.name)
   });
 });
 ```
@@ -146,7 +146,7 @@ Using either an instance from the prior functions or a stop identifier / number,
 
 ```js
 PerthTransit.busStop("22064").done(function(stop) {
-  console.log(stop.display_name, stop.times);
+  console.log(stop.name, stop.times);
 });
 ```
 
@@ -154,6 +154,6 @@ Or, using the object from the collection functions:
 
 ```js
 PerthTransit.busStop(stopNearMyHouse).done(function(stop) {
-  console.log(stop.display_name, stop.times);
+  console.log(stop.name, stop.times);
 });
 ```

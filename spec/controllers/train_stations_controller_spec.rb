@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TrainStationsController do
 
-  use_vcr_cassette :record => :new_episodes  
+  use_vcr_cassette :record => :new_episodes
 
   before :each do
     # We want to seed all the train stations...
@@ -83,7 +83,7 @@ describe TrainStationsController do
         content_body.lat.should =~ /^\-?\d+\.\d+$/
         content_body.lng.should be_a String
         content_body.lng.should =~ /^\-?\d+\.\d+$/
-        content_body.cached_slug.should == 'kenwick'
+        content_body.identifier.should == 'kenwick'
       end
 
       it 'should not be compact' do
