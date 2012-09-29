@@ -163,7 +163,7 @@ PerthTransit.busStop(stopNearMyHouse).done(function(stop) {
 The final endpoint provides details for a given smart rider. To access this data, use the `PerthTransit.smartRider` function like so:
 
 ```js
-PerthTransit.smartRider("0412 8427 4").done(function(sr) {
+PerthTransit.smartRider("123456789").done(function(sr) {
   console.log("SmartRider:", JSON.stringify(sr));
 });
 ``
