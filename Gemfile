@@ -24,6 +24,7 @@ group :test, :development do
   gem 'rr'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'uglifier', require: nil
 end
 
 group :test do

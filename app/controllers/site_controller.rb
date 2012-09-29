@@ -10,7 +10,7 @@ class SiteController < ApplicationController
     {
       name:           "Perth Transit API",
       version:        1,
-      documentation:  "http://docs.perthtransit.com/",
+      documentation:  "http://doc.perthtransit.com/",
       endpoints: {
         train_stations: train_stations_url(version: 1),
         bus_stops:      bus_stops_url(version: 1),
