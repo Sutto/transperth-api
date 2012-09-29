@@ -166,6 +166,6 @@ The final endpoint provides details for a given smart rider. To access this data
 PerthTransit.smartRider("123456789").done(function(sr) {
   console.log("SmartRider:", JSON.stringify(sr));
 });
-``
+```
 
 As an example, this provides the balance of the smart rider, if autoload is turned on and details about the concession status of a given card.
