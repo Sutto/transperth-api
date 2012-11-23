@@ -8,10 +8,10 @@ class BusStop < ActiveRecord::Base
 
   geocoded_by :address, latitude: :lat, longitude: :lng
 
-  def self.stop_near(coordinates)
+  def self.stop_near(coordinates, distance = 2.5)
     lat, lng = Array(coordinates).join(",").split(",", 2).map { |i| BigDecimal(i) }
     return where(id: false) if lat.blank? || lng.blank?
-    near([lat, lng], 2.5, units: :km).order('distance ASC')
+    near([lat, lng], distance, units: :km).order('distance ASC')
   end
 
   def self.import!

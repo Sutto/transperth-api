@@ -78,6 +78,10 @@ describe BusStop do
     BusStop.stop_near('0,0').limit(5).all.should == list[0, 5]
     BusStop.stop_near([0,0]).limit(5).all.should == list[0, 5]
     BusStop.stop_near([0.011, 0.011]).limit(5).all.should == list.reverse[0, 5]
+    BusStop.stop_near([0,0], 1000).all.should == list
+    BusStop.stop_near([0.011, 0.011], 1000).all.should == list.reverse
+    BusStop.stop_near([0, 0], 0.001).all.should == list[0, 1]
+    BusStop.stop_near([0.011, 0.011], 0.001).all.should == []
   end
 
 end
