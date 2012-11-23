@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(:version => 20120225051259) do
     t.decimal  "lng"
     t.string   "description"
     t.string   "cached_slug"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   add_index "bus_stops", ["cached_slug"], :name => "index_bus_stops_on_cached_slug"
 
   create_table "train_stations", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.decimal  "lat"
     t.decimal  "lng"
     t.string   "cached_slug"

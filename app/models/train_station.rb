@@ -21,12 +21,20 @@ class TrainStation < ActiveRecord::Base
     end
   end
 
+  def self.stop_information
+    @stop_information ||= begin
+      parsed_stops = ActiveSupport::JSON.decode File.read Rails.root.join("transit_data", "station-locations.json")
+      parsed_stops.each_with_object({}) do |stop, index|
+        name, lat, lng = stop
+        index[name.downcase] = [lat, lng]
+      end
+    end
+  end
+
   def self.geocode(name)
-    full_name = "#{name} Train Station, Perth, Western Australia"
-    location = geocoder["#{name} Train Station, Perth, Western Australia"]
-    return unless location
-    current = location.first.geometry.location
-    return current.lat, current.lng
+    full_name = "#{name} Stn".downcase
+    lat, lng = stop_information[full_name]
+    return lat, lng
   end
 
   def self.geocoder
