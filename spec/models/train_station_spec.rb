@@ -78,6 +78,10 @@ describe TrainStation do
     TrainStation.station_near('0,0').limit(5).all.should == list[0, 5]
     TrainStation.station_near([0,0]).limit(5).all.should == list[0, 5]
     TrainStation.station_near([0.011, 0.011]).limit(5).all.should == list.reverse[0, 5]
+    TrainStation.station_near([0,0], 1000).all.should == list
+    TrainStation.station_near([0.011, 0.011]).all.should == list.reverse
+    TrainStation.station_near([0,0], 0.001).all.should == list[0, 1]
+    TrainStation.station_near([0.011, 0.011], 0.001).all.should == []
   end
 
 end
