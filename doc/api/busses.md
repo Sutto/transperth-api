@@ -6,6 +6,11 @@ To get a list of bus stops near a given location, you need to
 hit the `/1/bus_stops` location with a `near` paramter specifying
 formatted `lat,lng` pair.
 
+Note you can optionally override the default distance by passing in a kilometres
+value in the `distance` parameter. Note that a `bad_request` error will be returned
+with a value that is not a number and that your values will be boxed to a minimum
+of 250m and a maximum of 50km. There is also a limit of 5 that still applies.
+
 This will return the five closest bus stops within 2.5km of the specified coordinate.
 
 ```http

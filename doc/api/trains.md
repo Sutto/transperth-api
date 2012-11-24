@@ -56,6 +56,11 @@ By providing a `near` parameter with a formatted `lat,lng` pair, you can filter
 to only stations within a 2.5 kilometre distance from the specified location up
 to a limit of 5.
 
+Note you can optionally override the default distance by passing in a kilometres
+value in the `distance` parameter. Note that a `bad_request` error will be returned
+with a value that is not a number and that your values will be boxed to a minimum
+of 250m and a maximum of 50km. There is also a limit of 5 that still applies.
+
 For example,
 
 ```http
