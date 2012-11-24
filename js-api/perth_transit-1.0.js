@@ -59,12 +59,12 @@
     return fullURL;
   }
 
-  PerthTransit.nearbyTrainStations = function() {
-    return locationDeferred(function(location) { return PerthTransit.trainStations(location); });
+  PerthTransit.nearbyTrainStations = function(distance) {
+    return locationDeferred(function(location) { return PerthTransit.trainStations(location, distance); });
   };
 
-  PerthTransit.nearbyBusStops = function() {
-    return locationDeferred(function(location) { return PerthTransit.busStops(location); });
+  PerthTransit.nearbyBusStops = function(distance) {
+    return locationDeferred(function(location) { return PerthTransit.busStops(location, distance); });
   };
 
   PerthTransit.trainStations = function(location, distance) {

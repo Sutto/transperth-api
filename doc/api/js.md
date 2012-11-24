@@ -66,6 +66,8 @@ PerthTransit.nearbyTrainStations().done(function(stations) {
 });
 ```
 
+Optionally, this also accepts a single argument that specifies the distance in a range from 0.25 (for 250m) to 50 (for 50km).
+
 ### Nearby Bus Stops
 
 `PerthTransit.nearbyBusStops` returns a deferred that is resolved when it recieves the bus stop locations back. Note that the API doesn't currently
@@ -80,6 +82,8 @@ PerthTransit.nearbyBusStops().done(function(stops) {
   });
 });
 ```
+
+Optionally, this also accepts a single argument that specifies the distance in a range from 0.25 (for 250m) to 50 (for 50km).
 
 ## Train Stations
 
@@ -101,6 +105,17 @@ By providing a location object (discussed above), you can easily filter to stops
 
 ```js
 PerthTransit.trainStations({lat: -32.1376, lng: 116.0104}).done(function(stations) {
+  $.each(stations, function() {
+    console.log("Station:", this.name)
+  });
+});
+```
+
+Optionally, this also accepts an extra argument that specifies the distance in a range from 0.25 (for 250m) to 50 (for 50km), like so:
+
+```js
+// Look within 10km, not 2.5
+PerthTransit.trainStations({lat: -32.1376, lng: 116.0104}, 10).done(function(stations) {
   $.each(stations, function() {
     console.log("Station:", this.name)
   });
@@ -134,6 +149,17 @@ The bus stop api only provides access to those restricted by a location. To acce
 
 ```js
 PerthTransit.busStops({lat: -32.1376, lng: 116.0104}).done(function(stops) {
+  $.each(stops, function() {
+    console.log("Bus Stop:", this.name)
+  });
+});
+```
+
+Optionally, this also accepts an extra argument that specifies the distance in a range from 0.25 (for 250m) to 50 (for 50km), like so:
+
+```js
+// Look within 10km, not 2.5
+PerthTransit.busStops({lat: -32.1376, lng: 116.0104}, 10).done(function(stops) {
   $.each(stops, function() {
     console.log("Bus Stop:", this.name)
   });
