@@ -12,14 +12,16 @@
     root:    "http://api.perthtransit.com/",
   };
 
-  var dataWithLocation = function(location) {
+  var dataWithLocation = function(location, distance) {
     if(!location) {
       return null;
     } else {
       var lat = location.lat || location.latitude;
       var lng = location.lng || location.lon || location.longitude;
       var near = "" + lat + "," + lng;
-      return {"near": near};
+      var options = {"near": near};
+      if(distance !== undefined) options['distance'] = distance;
+      return options;
     }
   };
 
@@ -65,16 +67,16 @@
     return locationDeferred(function(location) { return PerthTransit.busStops(location); });
   };
 
-  PerthTransit.trainStations = function(location) {
-    return this.get('train_stations', dataWithLocation(location));
+  PerthTransit.trainStations = function(location, distance) {
+    return this.get('train_stations', dataWithLocation(location, distance));
   };
 
   PerthTransit.trainStation = function(station) {
     return this.get('train_stations/' + extractIdentifier(station));
   };
 
-  PerthTransit.busStops = function(location) {
-    return this.get('bus_stops', dataWithLocation(location));
+  PerthTransit.busStops = function(location, distance) {
+    return this.get('bus_stops', dataWithLocation(location, distance));
   };
 
   PerthTransit.busStop = function(stop) {
