@@ -5,7 +5,7 @@ class BusStopsController < ApplicationController
 
   def index
     scope = BusStop.limit(5)
-    scope = scope.stop_near(params[:near]) if params[:near]
+    scope = scope.stop_near(params[:near], current_distance) if params[:near]
     expose scope.all, :compact => true
   end
 

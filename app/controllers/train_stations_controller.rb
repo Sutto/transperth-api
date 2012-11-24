@@ -7,7 +7,7 @@ class TrainStationsController < ApplicationController
   def index
     scope = TrainStation
     if params[:near].present?
-      scope = scope.station_near(params[:near]).limit(5)
+      scope = scope.station_near(params[:near], current_distance).limit(5)
     else
       scope = scope.order('name ASC')
     end

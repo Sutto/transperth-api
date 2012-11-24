@@ -59,6 +59,30 @@ describe TrainStationsController do
       content_body.first.name.should == 'Kenwick'
     end
 
+    it 'should allow filtering by distance' do
+      mock.proxy(TrainStation).station_near(anything, 4.5) { |r|  r }
+      get :index, :version => 1, :near => '10,10', :distance => 4.5
+      response.should be_successful
+    end
+
+    it 'should box distances to a minimum' do
+      mock.proxy(TrainStation).station_near(anything, 0.25) { |r|  r }
+      get :index, :version => 1, :near => '10,10', :distance => -1
+      response.should be_successful
+    end
+
+    it 'should box distances to a maximum' do
+      mock.proxy(TrainStation).station_near(anything, 50) { |r|  r }
+      get :index, :version => 1, :near => '10,10', :distance => 1000
+      response.should be_successful
+    end
+
+    it 'should be an error with an invalid distance' do
+      get :index, :version => 1, :near => '10,10', :distance => 'abc'
+      response.should be_bad_request
+      response.should be_api_error RocketPants::BadRequest
+    end
+
   end
 
   describe 'viewing a specific train station' do
