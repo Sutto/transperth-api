@@ -5,7 +5,3 @@
 require File.expand_path('../config/application', __FILE__)
 
 Transperth::Application.load_tasks
-
-# Rails - y u no like me?
-Rake::Task[:default].prerequisites.clear
-task :default => [:spec]
