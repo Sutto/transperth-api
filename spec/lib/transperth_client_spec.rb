@@ -39,7 +39,7 @@ describe TransperthClient do
   end
 
   describe 'getting live train times' do
-    
+
     let(:times) { TransperthClient.live_times("Perth Stn") }
 
     it 'should return an empty array for unknown stations' do

@@ -2,9 +2,10 @@
 
 ## Want to use the API?
 
-Howdy partner! This API is running for use in building applications.
+Howdy partner! This API is running for use in building applications consumg data about the Perth Transit API.
 
-To find out more, visit the [hosted API documentation](http://doc.perthtransit.com/).
+To find out more, visit the [hosted API documentation](http://doc.perthtransit.com/). We currently provide a hosted
+instance of this API on http://api.perthtransit.com/ that you can use and experiment with.
 
 ## About
 
@@ -47,6 +48,8 @@ Other than that, our guidelines very closely match the GemCutter guidelines [her
 Transperth API is released under the MIT License (see the [license file](https://github.com/Sutto/transperth-api/blob/master/LICENSE)) and is
 copyright Darcy Laycock, 2012.
 
-This client is in no way affiliated with / endorsed by Transperth and is intended for education purposes only. Please note
-Transperth and it's associated terms are property of Transperth itself and there is no association between this
-code, myself and Transperth.
+You're welcome to use and modify the code as you see fit.
+
+This client is in no way affiliated with / endorsed by Transperth. Please note that
+Transperth and it's associated terms are property of Transperth itself and
+there is no association between this code, myself and Transperth.
