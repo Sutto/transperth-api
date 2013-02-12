@@ -1,16 +1,28 @@
-require 'httparty'
+require 'faraday'
 require 'nokogiri'
-require 'open-uri'
+
+# Default to using persistent connections.
+Faraday.default_adapter = Rails.env.test? ? :net_http : :net_http_persistent
 
 class TransperthClient
 
-  class Client
-    include HTTParty
+  def self.main_connection
+    @mobile_connection ||= Faraday.new('http://www.transperth.wa.gov.au/') do |conn|
+      conn.request :retry, max: 2, interval: 0.05
+      conn.adapter Faraday.default_adapter
+    end
   end
 
-  URL_SCHEME         = "http://www.transperth.wa.gov.au/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
-  SMART_RIDER_SCHEME = "http://136213.mobi/SmartRider/SmartRiderResult.aspx?SRN=%s"
-  BUS_STOP_SCHEME    = "http://136213.mobi/Bus/StopResults.aspx?SN=%s"
+  def self.mobile_connection
+    @main_connection ||= Faraday.new('http://136213.mobi/') do |conn|
+      conn.request :retry, max: 2, interval: 0.05
+      conn.adapter Faraday.default_adapter
+    end
+  end
+
+  URL_SCHEME         = "/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
+  SMART_RIDER_SCHEME = "/SmartRider/SmartRiderResult.aspx?SRN=%s"
+  BUS_STOP_SCHEME    = "/Bus/StopResults.aspx?SN=%s"
 
   class TrainTime < APISmith::Smash
     property :time
@@ -40,8 +52,8 @@ class TransperthClient
   def self.smart_rider(code)
     code = code.to_s.gsub /\D/, ''
     return nil unless code =~ /^\d{9}$/
-    url = SMART_RIDER_SCHEME % URI.escape(code)
-    raw = open(url).read
+    path = SMART_RIDER_SCHEME % URI.escape(code)
+    raw  = mobile_connection.get(path).body
     return nil if raw =~ /smartrider number not found/i
     doc = Nokogiri::HTML raw
     nbsp =  Nokogiri::HTML("&nbsp;").text
@@ -54,22 +66,23 @@ class TransperthClient
   end
 
   def self.live_times(station)
-    url = URL_SCHEME % URI.escape(station.to_s)
-    doc = Nokogiri::HTML Client.get(url)
-    nbsp =  Nokogiri::HTML("&nbsp;").text
+    path      = URL_SCHEME % URI.escape(station.to_s)
+    raw       = main_connection.get(path).body
+    doc       = Nokogiri::HTML raw
+    nbsp      = Nokogiri::HTML("&nbsp;").text
     container = doc.css('#dnn_ctr1608_ModuleContent table table tr')
     return [] if container.blank?
     times = container[1..-2].map do |row|
       tds = row.css('td').map { |x| x.text.gsub(nbsp, " ").squeeze(' ').strip }
-      [tds[1], tds[2], tds[3], tds[5]]
-      time = tds[1]
-      line = tds[2].gsub(/To /, '')
-      extra = tds[3].gsub(/\(\d+ cars\)/, '')
+      # This is the biggest part of the live train train extraction algorithm.
+      time     = tds[1]
+      line     = tds[2].gsub(/To /, '')
+      extra    = tds[3].gsub(/\(\d+ cars\)/, '')
       platform = extra[/platform (\w+)/, 1].to_i
-      pattern = extra[/(\w+) pattern/, 1].to_s.strip.presence
-      cars =  tds[3][/(\d+) cars/].to_i
-      status = tds[5]
-      on_time = !!(status =~ /On Time/i)
+      pattern  = extra[/(\w+) pattern/, 1].to_s.strip.presence
+      cars     =  tds[3][/(\d+) cars/].to_i
+      status   = tds[5]
+      on_time  = !!(status =~ /On Time/i)
       TrainTime.new({
         :time     => time,
         :line     => line,
@@ -84,8 +97,8 @@ class TransperthClient
   end
 
   def self.bus_times(stop_number)
-    url = BUS_STOP_SCHEME % URI.escape(stop_number.to_s)
-    raw = open(url).read
+    path = BUS_STOP_SCHEME % URI.escape(stop_number.to_s)
+    raw  = mobile_connection.get(path).body
     return [] if raw =~ /not found or no more services/
     doc = Nokogiri::HTML raw
     doc.css('.tpm_row .tpm_row_content').map do |row|
@@ -107,8 +120,9 @@ class TransperthClient
   end
 
   def self.train_stations
-    url = URL_SCHEME % URI.escape("Perth Stn")
-    doc = Nokogiri::HTML Client.get(url)
+    path = URL_SCHEME % URI.escape("Perth Stn")
+    raw = main_connection.get(path).body
+    doc = Nokogiri::HTML raw
     doc.css('#dnn_ctr1610_DynamicForms_tblQuestions select option').map { |r| r[:value] }
   end
 
