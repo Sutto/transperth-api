@@ -2,7 +2,7 @@
 
 ## Want to use the API?
 
-Howdy partner! This API is running for use in building applications consumg data about the Perth Transit API.
+Howdy partner! This API is for building applications that consume data from the Perth Transit API.
 
 To find out more, visit the [hosted API documentation](http://doc.perthtransit.com/). We currently provide a hosted
 instance of this API on http://api.perthtransit.com/ that you can use and experiment with.
