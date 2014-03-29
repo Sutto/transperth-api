@@ -7,14 +7,14 @@ Faraday.default_adapter = Rails.env.test? ? :net_http : :net_http_persistent
 class TransperthClient
 
   def self.main_connection
-    @mobile_connection ||= Faraday.new('http://www.transperth.wa.gov.au/') do |conn|
+    Thread.current[:tps_mobile_connection] ||= Faraday.new('http://www.transperth.wa.gov.au/') do |conn|
       conn.request :retry, max: 2, interval: 0.05
       conn.adapter Faraday.default_adapter
     end
   end
 
   def self.mobile_connection
-    @main_connection ||= Faraday.new('http://136213.mobi/') do |conn|
+    Thread.current[:tps_main_connection] ||= Faraday.new('http://136213.mobi/') do |conn|
       conn.request :retry, max: 2, interval: 0.05
       conn.adapter Faraday.default_adapter
     end
