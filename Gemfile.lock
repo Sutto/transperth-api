@@ -117,6 +117,7 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    net-http-persistent (2.9.4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.8.0)
@@ -235,6 +236,7 @@ DEPENDENCIES
   fog_site
   gcoder
   geocoder
+  net-http-persistent
   nokogiri
   pg
   rails (~> 3.2.12)

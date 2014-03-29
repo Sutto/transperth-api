@@ -11,6 +11,7 @@ gem 'nokogiri'
 gem 'api_smith'
 gem 'rocket_pants'
 gem 'gcoder'
+gem 'net-http-persistent'
 
 gem 'awesome_print', require: nil
 gem 'geocoder'
