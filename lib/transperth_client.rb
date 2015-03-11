@@ -20,7 +20,7 @@ class TransperthClient
     end
   end
 
-  URL_SCHEME         = "/TimetablesMaps/LiveTrainTimes/tabid/436/stationname/%s/Default.aspx"
+  URL_SCHEME         = "/Timetables/Live-Train-Times?stationname=%s"
   SMART_RIDER_SCHEME = "/SmartRider/SmartRiderResult.aspx?SRN=%s"
   BUS_STOP_SCHEME    = "/Bus/StopResults.aspx?SN=%s"
 
@@ -70,18 +70,18 @@ class TransperthClient
     raw       = main_connection.get(path).body
     doc       = Nokogiri::HTML raw
     nbsp      = Nokogiri::HTML("&nbsp;").text
-    container = doc.css('#dnn_ctr1608_ModuleContent table table tr')
+    container = doc.css('table.table tbody tr')
     return [] if container.blank?
     times = container[1..-2].map do |row|
       tds = row.css('td').map { |x| x.text.gsub(nbsp, " ").squeeze(' ').strip }
       # This is the biggest part of the live train train extraction algorithm.
-      time     = tds[1]
-      line     = tds[2].gsub(/To /, '')
-      extra    = tds[3].gsub(/\(\d+ cars\)/, '')
+      time     = tds[0]
+      line     = tds[1].gsub(/To /, '')
+      extra    = tds[2].gsub(/\(\d+ cars\)/, '')
       platform = extra[/platform (\w+)/, 1].to_i
       pattern  = extra[/(\w+) pattern/, 1].to_s.strip.presence
-      cars     =  tds[3][/(\d+) cars/].to_i
-      status   = tds[5]
+      cars     =  tds[2][/(\d+) cars/].to_i
+      status = tds[3]
       on_time  = !!(status =~ /On Time/i)
       TrainTime.new({
         :time     => time,
@@ -123,7 +123,7 @@ class TransperthClient
     path = URL_SCHEME % URI.escape("Perth Stn")
     raw = main_connection.get(path).body
     doc = Nokogiri::HTML raw
-    doc.css('#dnn_ctr1610_DynamicForms_tblQuestions select option').map { |r| r[:value] }
+    doc.css('select[datevaluefield="StationName"] option').map { |r| r[:value] }.grep(/Stn\Z/)
   end
 
 end

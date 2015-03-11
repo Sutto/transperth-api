@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '2.1.1'
+ruby '2.2.0'
 
 gem 'rails', '~> 3.2.12'
 gem 'pg'
@@ -22,6 +22,8 @@ gem "thin"
 gem "emmett"
 
 gem "fog_site"
+
+gem 'test-unit'
 
 group :test, :development do
   gem 'rr'
