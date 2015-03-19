@@ -72,7 +72,7 @@ class TransperthClient
     nbsp      = Nokogiri::HTML("&nbsp;").text
     container = doc.css('table.table tbody tr')
     return [] if container.blank?
-    times = container[1..-2].map do |row|
+    times = container[0..-2].map do |row|
       tds = row.css('td').map { |x| x.text.gsub(nbsp, " ").squeeze(' ').strip }
       # This is the biggest part of the live train train extraction algorithm.
       time     = tds[0]
