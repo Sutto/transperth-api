@@ -23,29 +23,29 @@ describe BusStopsController do
       end
 
       it 'should have the correct status code' do
-        response.should be_successful
+        expect(response).to be_successful
       end
 
       it 'should be json' do
-        response.content_type.should == 'application/json'
+        expect(response.content_type).to eq('application/json')
       end
 
       it 'should have the station information' do
-        content_body.stop_number.should == '22959'
+        expect(content_body.stop_number).to eq('22959')
       end
 
       it 'should include train times' do
-        content_body.times.should be_present
-        content_body.times.should be_a Array
+        expect(content_body.times).to be_present
+        expect(content_body.times).to be_a Array
         content_body.times.each do |time|
-          time.time.should be_present
-          time.route.should be_present
-          time.destination.should be_present
+          expect(time.time).to be_present
+          expect(time.route).to be_present
+          expect(time.destination).to be_present
         end
       end
 
       it 'should be the correct type of response' do
-        response.should be_singular_resource
+        expect(response).to be_singular_resource
       end
 
     end
@@ -53,20 +53,20 @@ describe BusStopsController do
     context 'with invalid data' do
 
       before :each do
-        BusStop.where(:stop_number => '12345').should be_blank
+        expect(BusStop.where(:stop_number => '12345')).to be_blank
         get :show, :version => 1, :id => '12345'
       end
 
       it 'should return a not found error' do
-        response.should be_api_error RocketPants::NotFound
+        expect(response).to be_api_error RocketPants::NotFound
       end
 
       it 'should have the correct status code' do
-        response.status.should == 404
+        expect(response.status).to eq(404)
       end
 
       it 'should be json' do
-        response.content_type.should == 'application/json'
+        expect(response.content_type).to eq('application/json')
       end
 
     end

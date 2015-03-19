@@ -10,7 +10,7 @@ describe SmartRidersController do
 
     it 'should return a not found without a valid smart rider' do
       get :show, :version => 1, :id => '123456789'
-      response.should be_api_error RocketPants::NotFound
+      expect(response).to be_api_error RocketPants::NotFound
     end
 
     context 'with a valid smart rider number' do
@@ -20,22 +20,22 @@ describe SmartRidersController do
       end
 
       it 'should expose the data' do
-        content_body.keys.should =~ %w(balance concession_type concession_expires autoload)
-        content_body.balance.should be_present
-        content_body.balance.should be_a Float
-        [true, false].should include content_body.autoload
+        expect(content_body.keys).to match_array(%w(balance concession_type concession_expires autoload))
+        expect(content_body.balance).to be_present
+        expect(content_body.balance).to be_a Float
+        expect([true, false]).to include content_body.autoload
       end
 
       it 'should have the correct status code' do
-        response.should be_successful
+        expect(response).to be_successful
       end
 
       it 'should be the correct type of response' do
-        response.should be_singular_resource
+        expect(response).to be_singular_resource
       end
 
       it 'should return json' do
-        response.content_type.should == 'application/json'
+        expect(response.content_type).to eq('application/json')
       end
     
     end

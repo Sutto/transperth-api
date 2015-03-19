@@ -17,7 +17,7 @@ module VCRCassetteExtensions
   # Extends use_vcr_cassette to include support for per-test suffixed scenarios.
   def use_vcr_cassette_with_suffixing(*args)
     use_vcr_cassette_without_suffixing(*args)
-    before :each do
+    before :each do |example|
       if example.metadata[:suffix_cassette]
         normalized_name = Jammbox::NameNormalizer.normalize(example.description)
         existing = VCR.eject_cassette

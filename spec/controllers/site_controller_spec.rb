@@ -6,13 +6,13 @@ describe SiteController do
 
     it 'should have the correct response' do
       get :index
-      response.should be_successful
-      response.content_type.should be_json
+      expect(response).to be_successful
+      expect(response.content_type).to be_json
     end
 
     it 'should include endpoints' do
       get :index
-      decoded_response.endpoints.should be_present
+      expect(decoded_response.endpoints).to be_present
     end
 
   end
