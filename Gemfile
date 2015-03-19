@@ -24,11 +24,13 @@ gem "emmett"
 gem "fog_site"
 
 gem 'test-unit'
+gem 'puma'
 
 group :test, :development do
   gem 'rr'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'transpec'
   gem 'uglifier', require: nil
 end
 
