@@ -22,7 +22,7 @@ class TrainStation < ActiveRecord::Base
   end
 
   def self.stop_information
-    @stop_information ||= begin
+    Thread.current[:TrainStation_stop_information] ||= begin
       parsed_stops = ActiveSupport::JSON.decode File.read Rails.root.join("transit_data", "station-locations.json")
       parsed_stops.each_with_object({}) do |stop, index|
         name, lat, lng = stop
@@ -38,7 +38,7 @@ class TrainStation < ActiveRecord::Base
   end
 
   def self.geocoder
-    @geocoder ||= GCoder.connect(:storage => :heap)
+    Thread.current[:TrainStation__geocoder] ||= GCoder.connect(:storage => :heap)
   end
 
   def times
