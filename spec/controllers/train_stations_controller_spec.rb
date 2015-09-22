@@ -60,19 +60,19 @@ describe TrainStationsController do
     end
 
     it 'should allow filtering by distance' do
-      double.proxy(TrainStation).station_near(anything, 4.5) { |r|  r }
+      stub.proxy(TrainStation).station_near(anything, 4.5) { |r|  r }
       get :index, :version => 1, :near => '10,10', :distance => 4.5
       expect(response).to be_successful
     end
 
     it 'should box distances to a minimum' do
-      double.proxy(TrainStation).station_near(anything, 0.25) { |r|  r }
+      stub.proxy(TrainStation).station_near(anything, 0.25) { |r|  r }
       get :index, :version => 1, :near => '10,10', :distance => -1
       expect(response).to be_successful
     end
 
     it 'should box distances to a maximum' do
-      double.proxy(TrainStation).station_near(anything, 50) { |r|  r }
+      stub.proxy(TrainStation).station_near(anything, 50) { |r|  r }
       get :index, :version => 1, :near => '10,10', :distance => 1000
       expect(response).to be_successful
     end

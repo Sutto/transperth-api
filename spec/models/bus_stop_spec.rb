@@ -65,7 +65,7 @@ describe BusStop do
   end
 
   it 'should let you import bus stops' do
-    double(BusStop).create.with_any_args.times(any_times)
+    stub(BusStop).create.with_any_args.times(any_times)
     BusStop.import!
   end
 
