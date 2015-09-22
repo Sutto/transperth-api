@@ -10,7 +10,6 @@ describe TrainStation do
       station = TrainStation.new
       expect(station.name).to be_blank
       expect(station).not_to be_valid
-      p station
       expect(station.errors[:name].size).to be >= 1
       station.name = 'New Test Station Name'
       expect(station).to be_valid
